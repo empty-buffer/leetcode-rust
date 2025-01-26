@@ -77,29 +77,27 @@ mod tests {
     struct TestCase {
         nums: Vec<i32>,
         val: i32,
-        result: i32
+        result: i32,
     }
+
     #[test]
     fn remove_element() -> Result<()> {
-        let test_cases:Vec<TestCase> = vec![
-            TestCase {
-                nums: vec![1, 2, 3, 0, 0, 0],
-                val: 0,
-                result: 3
-            },
-        ];
+        let test_cases: Vec<TestCase> = vec![TestCase {
+            nums: vec![1, 2, 3, 0, 0, 0],
+            val: 0,
+            result: 3,
+        }];
 
-
-        for mut test in test_cases.clone(){
+        for mut test in test_cases.clone() {
             let res = Solution::remove_element(&mut test.nums, test.val);
             assert_eq!(res, test.result, "Test failed output: {:?}", test.nums);
         }
 
-        for mut test in test_cases.clone(){
+        for mut test in test_cases.clone() {
             let res = Solution::remove_element_without_methods_v2(&mut test.nums, test.val);
             assert_eq!(res, test.result, "Test failed output: {:?}", test.nums);
         }
-        for mut test in test_cases.clone(){
+        for mut test in test_cases.clone() {
             let res = Solution::remove_element_without_methods(&mut test.nums, test.val);
             assert_eq!(res, test.result, "Test failed output: {:?}", test.nums);
         }

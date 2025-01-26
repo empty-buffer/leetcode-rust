@@ -54,6 +54,7 @@ impl Solution {
             })
             .collect();
         println!("{:?}", nums);
+
         nums.len() as i32
     }
 
@@ -117,7 +118,7 @@ mod tests {
         let mut test_cases = vec![case_1, case_2];
 
         for case in test_cases.iter_mut() {
-            let r = Solution::remove_duplicates_two_pointer(&mut case.input);
+            let r = Solution::remove_duplicates_flat_map(&mut case.input);
             assert_eq!(case.expected_result, r);
         }
 
