@@ -24,4 +24,5 @@ gitcommit
 # ide
 .idea
 .fleet
+zed_vim.*
 .vscode
