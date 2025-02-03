@@ -23,24 +23,22 @@ impl Display for Search {
 
 fn helper(nums: Vec<i32>, target: i32, low: usize, high: usize) -> Search {
     if low > high {
-        if low <= nums.len() - 1 {
-            let mut l_closest = nums[low] - target;
-            let mut h_closest = nums[high] - target;
-
-            l_closest = l_closest.max(-l_closest);
-            h_closest = h_closest.max(-h_closest);
+        let closest = if low <= nums.len() - 1 {
+            let l_closest = (nums[low] - target).abs();
+            let h_closest = (nums[high] - target).abs();
 
             if l_closest < h_closest {
-                return Search {
-                    target: None,
-                    closest: Some(nums[low]),
-                };
+                nums[low]
+            } else {
+                nums[high]
             }
-        }
+        } else {
+            nums[high]
+        };
 
         return Search {
             target: None,
-            closest: Some(nums[high]),
+            closest: Some(closest),
         };
     }
 
