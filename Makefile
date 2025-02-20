@@ -5,7 +5,12 @@
 help: ## - Display this help screen
 	@awk 'BEGIN {FS = ":.*##"; printf "\nUsage:\n  make \033[36m<target>\033[0m\n"} /^[a-zA-Z_-]+:.*?##/ { printf "  \033[36m%-35s\033[0m %s\n", $$1, $$2 } /^##@/ { printf "\n\033[1m%s\033[0m\n", substr($$0, 5) } ' $(MAKEFILE_LIST)
 
-.PHONY: bit_test
+.PHONY: run_bin
+run_bin: ## - Run cargo test --bin <test file>
+	cargo run --bin $(bin)
+
+
+.PHONY: bin_test
 test_bin: ## - Run cargo test --bin <test file>
 	cargo test --bin $(bin) -- tests --show-output
 
