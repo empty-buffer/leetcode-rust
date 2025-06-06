@@ -10,7 +10,7 @@ run_bin: ## - Run cargo test --bin <test file>
 	cargo run --bin $(bin)
 
 
-.PHONY: bin_test
+.PHONY: test_bin
 test_bin: ## - Run cargo test --bin <test file>
 	cargo test --bin $(bin) -- tests --show-output
 
